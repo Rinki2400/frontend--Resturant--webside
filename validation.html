@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> js form validation</title>
+</head>
+<style type="text/css">
+	body{
+		padding: 10px 50px;
+	}
+	.formsign{
+		font-size: 20px;
+	}
+	.formsign input{
+		width: 50%;
+		padding: 12px 20px;
+		border: 1px solid blue;
+		margin: 14px;
+		border-radius: 4px;
+		font-size: 15px;
+
+	}
+	.formerror{
+		color: red;
+	}
+	.but{
+		border-radius: 16px;
+		width: 100px;
+		height: 30px;
+		font-size: 25px;
+		margin: 22px 20px;
+	}
+</style>
+<body>
+	<h1>Form</h1>
+	<form action="/myaction.php" name="myform" onsubmit="return validationform()" method="post">
+		<div class="formsign" id="name">
+	Name:<input type="text" name="fname" ><span class="formerror"><b></b></span>
+	</div>
+	<div class="formsign" id="email">
+	Email:<input type="email"  name="femail"><span class="formerror"><b></b></span>
+	</div>
+	<div class="formsign" id="phone">
+	Phone:<input type="phone"  name="fphone"><span class="formerror"><b></b></span>
+	</div>
+	<div class="formsign" id="password">
+	password:<input type="text"name="fpass" ><span class="formerror"><b></span></b>
+	</div>
+	<div class="formsign" id="cpass">
+	confirm password:<input type="text"name="fcpass" ><span class="formerror"><b></span></b>
+	</div>
+	<input class="but"type="submit" value="submit">
+
+	</form>
+</body>
+<script type="text/javascript">
+	function seterror (id,error)
+	{
+		//set error inside tag of id
+		element=document.getElementById(id);
+		element.getElementsByClassName('formerror')[0].innerHTML=error
+	}
+	function validationform()
+	{
+		var returval=true;
+		var name=document.form['myform']["fname"].value;
+		if (name.length<5) {
+			seterror("name","length of name is too short");
+			returval=false;
+			}		
+		
+		return returval;
+	}
+</script>
+</html>
